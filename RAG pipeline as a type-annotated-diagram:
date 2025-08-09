@@ -1,0 +1,72 @@
+ ┌───────────────────────────────────────────────┐
+ │  PDF File: "EPGPMachineLearningAIBrochure.pdf" │
+ └───────────────────────────────────────────────┘
+                      │
+                      ▼
+           ┌────────────────────┐
+           │ PyPDFLoader         │  loader: PyPDFLoader
+           └────────────────────┘
+                      │
+                      ▼
+           ┌────────────────────┐
+           │ List[Document]     │  docs
+           └────────────────────┘
+                      │
+                      ▼
+  ┌──────────────────────────────────────────┐
+  │ RecursiveCharacterTextSplitter           │ text_splitter: RecursiveCharacterTextSplitter
+  │  chunk_size=1000, chunk_overlap=200       │
+  └──────────────────────────────────────────┘
+                      │
+                      ▼
+           ┌────────────────────┐
+           │ List[Document]     │  all_splits
+           └────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ Extract text                 │
+      │ texts: List[str]             │
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ OpenAIEmbeddings             │ emb: OpenAIEmbeddings
+      │ model="text-embedding-3-small"│
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ Chroma Vector Store          │ vector_store: Chroma
+      │ + embeddings                 │
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ Retriever                    │ retriever: Runnable
+      │ search_type="similarity"     │
+      │ search_kwargs={"k": 3}       │
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ format_docs(docs: List[Document]) -> str │
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ LangSmith Prompt             │ prompt: Runnable
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ Chat Model (GPT-4o-mini)     │ model: BaseChatModel
+      └─────────────────────────────┘
+                      │
+                      ▼
+      ┌─────────────────────────────┐
+      │ StrOutputParser              │ -> str
+      └─────────────────────────────┘
+                      │
+                      ▼
+       Final Answer: str  ("response")
