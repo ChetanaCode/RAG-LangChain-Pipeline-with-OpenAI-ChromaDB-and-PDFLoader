@@ -72,12 +72,12 @@ python main.py
 ### 3. Example Query
 
 ```python
-rag_chain.invoke("How many years experience does Chetana have?")
+rag_chain.invoke("what is the duration of the course?")
 ```
 
 **Output Example:**
 ```
-Chetana has 7 years of experience in the AI/ML domain.
+The duration of the course is 13 months. It is delivered in a blended format, combining asynchronous learning and live sessions. Students are expected to commit approximately 15 hours per week.
 ```
 
 ---
