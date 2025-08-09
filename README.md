@@ -1,4 +1,4 @@
-# 📄 RAG LangChain Pipeline with OpenAI,ChromaDB and PDF 
+# 📄 RAG LangChain Pipeline with OpenAI,ChromaDB and PDF Loader
 
 This project demonstrates how to build a **Retrieval-Augmented Generation (RAG)** pipeline using:
 
