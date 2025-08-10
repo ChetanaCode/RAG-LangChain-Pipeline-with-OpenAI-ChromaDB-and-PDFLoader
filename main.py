@@ -1,6 +1,7 @@
 """
 README with Code
 ================
+Code modified.
 
 This file contains both the README and the full main.py script with type hints.
 
@@ -14,6 +15,7 @@ Steps to Run:
 """
 
 from dotenv import load_dotenv
+
 load_dotenv()
 import os
 from langchain.chat_models import init_chat_model
